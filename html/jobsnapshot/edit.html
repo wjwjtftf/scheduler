@@ -1,0 +1,216 @@
+<div class="container">
+
+
+
+    <div class="page-header">
+        <h1><small>任务执行信息</small></h1>
+    </div>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form id="searchForm" action="/jobsnapshot/list.htm" method="post" class="navbar-form navbar-left form-inline" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" name="name" value="" >
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Grop" name="group" value="" >
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <select  id="status" name="status" class="form-control">
+                        <option value="" >
+                            All Status
+                        </option>
+                        <option value="INIT"  >
+                            INIT
+                        </option>
+                        <option value="INVOKING"  >
+                            INVOKING
+                        </option>
+                        <option value="EXECUTING"  >
+                            EXECUTING
+                        </option>
+                        <option value="COMPLETED"  >
+                            COMPLETED
+                        </option>
+                        <option value="ERROR"  selected  >
+                            ERROR
+                        </option>
+                    </select>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-default">Search</button>
+                <button type="button" id="cleanOneWeekBtn" style="margin-left: 100px;" class="btn btn-info">清理一周前的数据</button>
+                <button type="button" id="cleanOneMonthBtn" style="margin-left: 50px;" class="btn btn-info">清理一个月前的数据</button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+    <h4 >
+        <small>如果没有查询条件,只会显示最近100条记录.</small>
+    </h4>
+
+
+    <table class="table table-condensed table-bordered table-striped" style="text-align:center" >
+        <thead>
+        <tr style="text-align:center" >
+            <th style="text-align:center" >
+                ID
+            </th>
+            <th style="text-align:center" >
+                任务名称
+            </th>
+            <th style="text-align:center" >
+                任务分组
+            </th>
+            <th style="text-align:center" >
+                状态
+            </th>
+            <th style="text-align:center" >
+                IP
+            </th>
+            <th style="text-align:center" >
+                URL
+            </th>
+            <th style="text-align:center" >
+                任务耗时(秒)
+            </th>
+            <th style="text-align:center" >
+                创建时间
+            </th>
+            <th style="text-align:center" >
+                最后变更时间
+            </th>
+            <th style="width:55px;text-align:center" >
+                停止
+            </th>
+            <th style="width:55px;text-align:center" >
+                详情
+            </th>
+        </tr>
+        </thead>
+
+        <tr >
+            <td >
+1
+            </td>
+            <td >
+3
+            </td>
+            <td >
+4
+            </td>
+            <td>5</td>
+            <td>
+6
+            </td>
+            <td >
+7
+            </td>
+            <td >
+8
+            </td>
+            <td >
+9
+            </td>
+            <td >
+10
+            </td>
+            <td align="center">
+
+                <button type="stopButton" class="btn btn-default btn" value="" onclick="confirmStop()">
+                    <span class="glyphicon glyphicon-stop"></span>
+                </button>
+
+                <p class="glyphicon glyphicon-cloud-download" style="padding-top: 4px"></p>
+
+            </td>
+
+            <td >
+                <a href="$ac.contextPath/jobsnapshot/view/.htm">
+                    <button id="viewBtn" type="button" class="btn btn-default btn" onclick="view()">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                </a>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+    // 隐藏成功提示.
+    $("#alert-success").hide();
+
+    var liArray = $("#navBarUl li");
+    jQuery.each(liArray, function(i,n){
+        $(n).removeClass("active");
+    });
+
+    $("#jobSnapshotListLi").addClass("active");
+
+    // clean one week
+    $("#cleanOneWeekBtn").click(function(){
+        showConfirm("清理数据","您确定要清理一周前的数据吗? 建议只清理一个月前的数据,您还要继续吗?","不","是滴",cleanOneWeek);
+    });
+
+    function cleanOneWeek(){
+        jQuery.getJSON("$ac.contextPath/jobsnapshot/clean/oneweek.json", function(json){
+            if(json.status ==0){
+                $("#searchForm").submit();
+            }else{
+                showError(json.errorMsg);
+            }
+        });
+    }
+
+    // clean one month
+    $("#cleanOneMonthBtn").click(function(){
+        showConfirm("清理数据","您确定要清理一个月前的数据吗?","不","是滴",cleanOneMonth);
+    });
+
+    function cleanOneMonth(){
+        jQuery.getJSON("$ac.contextPath/jobsnapshot/clean/onemonth.json", function(json){
+            if(json.status ==0){
+                $("#searchForm").submit();
+            }else{
+                showError(json.errorMsg);
+            }
+        });
+    }
+
+
+    // 确定是否停止这个JOB
+    function confirmStop(id){
+        showConfirm("大侠,  确定停止这次任务咯?", "注意: 只有继承了AbstractJob, 同时通过isTerminated()判断是否终止的任务, 才能完美停止. 其他JOB, 小主我不保证完美停止!!!",
+                "Close" , "Submit" , stopJobInfo, id);
+    }
+
+
+    // 停止job请求
+    function stopJobInfo(id){
+        jQuery.getJSON("$ac.contextPath/jobsnapshot/stop/" + id, function(json){
+
+            if(json.status==0){
+                showModelText("成功!", json.stopDetail, refreshPage);
+            } else{
+                showModelText("失败!", json.errorMsg, refreshPage);
+            }
+
+        });
+    }
+
+
+    // 刷新当前页面
+    function refreshPage() {
+        $("#searchForm").submit();
+    }
+
+</script>
+

@@ -1,0 +1,84 @@
+<div class="container">
+
+
+    <div class="page-header">
+        <h1>
+            <small>任务执行信息</small>
+        </h1>
+    </div>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form id="searchForm" action="/jobinfohistory/list" method="post"
+                  class="navbar-form navbar-left form-inline" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name" name="Name" value="{{.name}}">
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Grop" name="Group" value="{{.group}}">
+                </div>
+
+                &nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-default">Search</button>
+                </button>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <h4>
+        <small>如果没有查询条件,只会显示最近100条记录.</small>
+    </h4>
+
+
+    <table class="table table-condensed table-bordered table-striped" style="text-align:center">
+        <thead>
+        <tr style="text-align:center">
+            <th style="text-align:center">
+                ID
+            </th>
+            <th style="text-align:center">
+                任务名称
+            </th>
+            <th style="text-align:center">
+                任务分组
+            </th>
+            <th style="text-align:center">
+                状态
+            </th>
+            <th style="text-align:center">
+                IP
+            </th>
+            <th style="text-align:center">
+                URL
+            </th>
+            <th style="text-align:center">
+                任务耗时(秒)
+            </th>
+            <th style="text-align:center">
+                创建时间
+            </th>
+            <th style="text-align:center">
+                最后变更时间
+            </th>
+            <th style="width:55px;text-align:center">
+                停止
+            </th>
+            <th style="width:55px;text-align:center">
+                详情
+            </th>
+        </tr>
+        </thead>
+
+        <tr>
+
+            <td colspan="11">暂时没有数据...</td>
+        </tr>
+
+
+    </table>
+
+
+</div>

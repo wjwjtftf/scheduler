@@ -1,0 +1,138 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            <small>任务执行详情</small>
+        </h1>
+    </div>
+
+    <form id="editForm" class="form-horizontal" role="form" action="#" method="post">
+        <div class="form-group">
+            <label for="Id" class="col-sm-2 control-label">ID:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="Id" name="Id" value="{{.jobSnapshot.Id}}"
+                       placeholder="必须填写" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="jobId" class="col-sm-2 control-label">任务ID:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="jobId" name="jobId" value="{{.jobSnapshot.JobInfoId}}"
+                       placeholder="必须填写" autocomplete="off"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">任务名称:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="name" name="Name" value="{{.jobSnapshot.Name}}"
+                       placeholder="必须填写" autocomplete="off"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="group" class="col-sm-2 control-label">任务分组:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="group" name="Group" value="{{.jobSnapshot.Group}}"
+                        autocomplete="off"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="Status" class="col-sm-2 control-label">当前状态:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="Status" name="Status" value="{{.jobSnapshot.Status}}"
+                       autocomplete="off"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="TimeConsume" class="col-sm-2 control-label">任务耗时(毫秒):</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="TimeConsume" name="TimeConsume"
+                       value="{{.jobSnapshot.TimeConsume}}"  autocomplete="off"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="IP" class="col-sm-2 control-label">IP:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="IP" name="IP"
+                       value="{{.jobSnapshot.Ip}}"  autocomplete="off"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="IP" class="col-sm-2 control-label">URL:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="URL" name="URL"
+                       value="{{.jobSnapshot.Url}}" autocomplete="off"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="CreateTime" class="col-sm-2 control-label">创建时间:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="CreateTime" name="CreateTime"
+                       value="{{dateformat .jobSnapshot.CreateTime "2006-01-02 15:04:05" }}" autocomplete="off"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="ModifyTime" class="col-sm-2 control-label">修改时间:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="ModifyTime" name="ModifyTime"
+                       value="{{dateformat .jobSnapshot.ModifyTime "2006-01-02 15:04:05" }}" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ModifyTime" class="col-sm-2 control-label">服务端地址:</label>
+
+            <div class="col-sm-4">
+                <input type="text" readonly class="form-control" id="ServerAddress" name="ServerAddress"
+                       value="{{.jobSnapshot.ServerAddress}}" autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Result" class="col-sm-2 control-label">结果:</label>
+
+            <div class="col-sm-8">
+                <textarea readonly class="form-control col-sm-10" style="resize:none;" rows="10" id="Result" name="Result"
+                          autocomplete="off" />{{.jobSnapshot.Result}}</textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="Detail" class="col-sm-2 control-label">详细记录:</label>
+
+            <div class="col-sm-8">
+                <textarea readonly class="form-control col-sm-10" style="resize:none;" rows="10" id="Detail" name="Result"
+                          autocomplete="off" />{{.jobSnapshot.Detail}}</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+
+                <a id="backBtn" class="btn btn-default" href="javascript:window.history.go(-1);" style="margin-left: 50px;">
+                    返回
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>

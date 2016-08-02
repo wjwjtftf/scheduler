@@ -1,0 +1,86 @@
+
+<div class="container">
+
+    <div class="page-header">
+        <h1><small>任务信息</small></h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+
+                <form class="form-inline" action="/jobinfo/list" method="post">
+                    <div class="form-group">
+                        <label class="sr-only" for="jobName"></label>
+                        <input type="text" class="form-control" id="jobName" value="{{.name}}" name="Name" placeholder="任务名称">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="group">Group</label>
+                        <input type="text" class="form-control" name="Group" id="group" value="{{.group}}" placeholder="任务分组">
+                    </div>
+
+                    <button type="submit" class="btn btn-default"><span class="glyphicon  glyphicon-search" aria-hidden="true">搜索</button>
+                </form>
+
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>任务名称</th>
+                    <th>任务分组</th>
+                    <th>Cron表达式</th>
+                    <th>目标服务器URL</th>
+                    <th>目标服务器URL参数</th>
+                    <th>激活</th>
+                    <th>详情</th>
+                    <th>编辑</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {{range $index,$element :=.jobs}}
+                <tr>
+                <td>{{$element.Id}}</td>
+                <td>{{$element.Name}}</td>
+                <td>{{$element.Group}}</td>
+                <td>{{$element.Cron}}</td>
+                <td>{{$element.Urls}}</td>
+                <td>{{$element.Param}}</td>
+                <td>
+
+
+
+                    {{if eq 1  $element.IsActivity}}
+
+                    <input id="switch-onText"  value="{{$element.Id}}" type="checkbox" checked data-size="mini"  data-on-text="激活" data-off-text="注销">
+                        {{else}}
+                    <input id="switch-offText" value="{{$element.Id}}"  type="checkbox"  data-size="mini"  data-on-text="激活" data-off-text="注销">
+
+                    {{end}}
+                </td>
+                <td><a type="button" href="/jobinfo/info?Id={{$element.Id}}"  class="btn btn-default btn-sm"><span class="glyphicon  glyphicon-eye-open" aria-hidden="true"></span></a></td>
+                <td><a type="button" href="/jobinfo/edit?Id={{$element.Id}}" class="btn btn-warning btn-sm"><span class="glyphicon  glyphicon-cog" aria-hidden="true"></span></a></td>
+                <td> <a type="button" att = "{{$element.Id}}" class="btn btn-danger btn-sm btn_delete"><span class="glyphicon  glyphicon-trash" aria-hidden="true"></a></td>
+                </tr>
+                {{else}}
+                   <tr>
+
+                       <td colspan="11">
+
+                           <span class="text-center">无Job记录</span>
+                       </td>
+                   </tr>
+                {{end}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/app/jobinfo/list.js"></script>

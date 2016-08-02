@@ -1,0 +1,79 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1><small>添加新任务</small></h1>
+    </div>
+
+    <form  id="addForm" class="form-horizontal" role="form" action="/jobinfo/add" method="post">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">任务名称:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="name" name="Name" value="" placeholder="必须填写" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="group" class="col-sm-2 control-label">任务分组:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="group" name="Group" value="" placeholder="必须填写,一般是系统模块名" autocomplete="off"/>
+            </div>
+        </div>
+        <div id="cronDiv" class="form-group">
+            <label for="cron" class="col-sm-2 control-label">Cron表达式:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="cron" name="Cron" value="" placeholder="必须填写" autocomplete="off" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="urls" class="col-sm-2 control-label">目标服务器 URL:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="urls" name="Urls" value="" placeholder="必须填写, 多条请用半角逗号分割" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="classPathPriority" class="col-sm-2 control-label">调用策略:</label>
+            <div class="col-sm-4">
+                <div class="radio radio-inline">
+                    <label>
+                        <input type="radio" id="classPathPriority" name="InvokePolicy" value="PRIORITY" checked/>
+                        顺序优先
+                    </label>
+                </div>
+                <div class="radio radio-inline">
+                    <label>
+                        <input type="radio" id="classPathRandom" name="InvokePolicy" value="RANDOM" />
+                        随机选取
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="param" class="col-sm-2 control-label">参数:</label>
+            <div class="col-sm-6">
+                <textarea  class="form-control col-sm-10" style="resize:none;" rows="5" id="param" name="Param" autocomplete="off" placeholder="最多 255 个字符" /></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc" class="col-sm-2 control-label">描述:</label>
+            <div class="col-sm-6">
+                <textarea  class="form-control col-sm-10" style="resize:none;" rows="5" id="desc" name="Desc" autocomplete="off" placeholder="这个任务是做什么的, 谁负责维护等等." /></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ownerPhone" class="col-sm-2 control-label">负责人手机号:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="ownerPhone" name="OwnerPhone" value="" placeholder="任务执行异常时，会短信通知您" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="submitBtn" type="submit" class="btn btn-primary">添加新任务</button>
+                <a id="backBtn" class="btn btn-default" href="javascript:window.history.go(-1);" style="margin-left: 50px;">
+                    返回
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script src="/static/js/app/jobinfo/add.js"></script>

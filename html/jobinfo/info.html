@@ -1,0 +1,94 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1><small>查看任务信息</small></h1>
+    </div>
+
+    <form  id="editForm" class="form-horizontal" role="form" action="/jobinfo/edit" method="post">
+        <input type="hidden" name="Id" value="{{.jobInfo.Id}}">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">任务名称:</label>
+            <div class="col-sm-6">
+                <input type="text"  readonly class="form-control" id="name" name="Name" value="{{.jobInfo.Name}}" placeholder="必须填写" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="group" class="col-sm-2 control-label">任务分组:</label>
+            <div class="col-sm-6">
+                <input type="text" readonly  class="form-control" id="group" name="Group" value="{{.jobInfo.Group}}" placeholder="必须填写,一般是系统模块名" autocomplete="off"/>
+            </div>
+        </div>
+        <div id="cronDiv" class="form-group">
+            <label for="cron" class="col-sm-2 control-label">Cron表达式:</label>
+            <div class="col-sm-6">
+                <input type="text" readonly  class="form-control" id="cron" name="Cron" value="{{.jobInfo.Cron}}" placeholder="必须填写" autocomplete="off" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="urls" class="col-sm-2 control-label">目标服务器 URL:</label>
+            <div class="col-sm-6">
+                <input type="text"  readonly class="form-control" id="urls" name="Urls" value="{{.jobInfo.Urls}}" placeholder="必须填写, 多条请用半角逗号分割" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="classPathPriority" class="col-sm-2 control-label">调用策略:</label>
+            <div class="col-sm-4">
+                <div class="radio radio-inline">
+                    <label>
+                        <input disabled type="radio" id="classPathPriority" name="InvokePolicy" value="PRIORITY" {{if eq "PRIORITY" .jobInfo.InvokePolicy }}  checked  {{end}} />
+                        顺序优先
+                    </label>
+                </div>
+                <div class="radio radio-inline">
+                    <label>
+                        <input disabled type="radio" id="classPathRandom" name="InvokePolicy" value="RANDOM" {{if eq "RANDOM" .jobInfo.InvokePolicy }}  checked  {{end}}/>
+                        随机选取
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="activity" class="col-sm-2 control-label">是否激活:</label>
+            <div class="col-sm-4">
+                <div class="checkbox">
+                    <label>
+                        <input disabled type="radio" value="1"  id="activity" name="IsActivity" {{if eq 1 .jobInfo.IsActivity }}  checked  {{end}} />
+                        激活
+                    </label>
+                    <label>
+                        <input disabled type="radio" value="0"   name="IsActivity" {{if eq 0  .jobInfo.IsActivity }}  checked  {{end}}/>
+                        否
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="param" class="col-sm-2 control-label">参数:</label>
+            <div class="col-sm-6">
+                <textarea  readonly  class="form-control col-sm-10" style="resize:none;" rows="5" id="param" name="Param" autocomplete="off" placeholder="最多 255 个字符" />{{.jobInfo.Param}}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc" class="col-sm-2 control-label">描述:</label>
+            <div class="col-sm-6">
+                <textarea  readonly class="form-control col-sm-10" style="resize:none;" rows="5" id="desc" name="Desc" autocomplete="off" placeholder="这个任务是做什么的, 谁负责维护等等." />{{.jobInfo.Desc}}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ownerPhone" class="col-sm-2 control-label">负责人手机号:</label>
+            <div class="col-sm-6">
+                <input type="text"  class="form-control" id="ownerPhone" readonly name="OwnerPhone" value="{{.jobInfo.OwnerPhone}}" placeholder="任务执行异常时，会短信通知您" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+
+                <a id="backBtn" class="btn btn-default" href="javascript:window.history.go(-1);" style="margin-left: 50px;">
+                    返回
+                </a>
+            </div>
+        </div>
+    </form>
+
+</div>

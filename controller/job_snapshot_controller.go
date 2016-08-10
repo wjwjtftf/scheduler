@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"scheduler/entity"
 	"scheduler/common"
+	"scheduler/entity"
 )
 
 type JobSnapshotController struct {
@@ -11,10 +11,10 @@ type JobSnapshotController struct {
 
 func (this *JobSnapshotController) List() {
 
-	name := this.GetString("Name");
-	group := this.GetString("Group");
+	name := this.GetString("Name")
+	group := this.GetString("Group")
 	status := this.GetString("Status")
-	jobSnapshot := entity.JobSnapshot{Name:name, Group:group,Status:status}
+	jobSnapshot := entity.JobSnapshot{Name: name, Group: group, Status: status}
 
 	jobSnapshotList, err := jobSnapshot.FindList()
 	common.PanicIf(err)
@@ -51,12 +51,12 @@ func (this *JobSnapshotController) Edit() {
 	this.Render()
 }
 
-func (this *JobSnapshotController) Info()  {
+func (this *JobSnapshotController) Info() {
 
-	  id,err:= this.GetInt("Id")
+	id, err := this.GetInt("Id")
 	common.PanicIf(err)
 
-	jobSnapshot := entity.JobSnapshot{Id:id}
+	jobSnapshot := entity.JobSnapshot{Id: id}
 
 	err = jobSnapshot.GetJobSnapshot()
 	common.PanicIf(err)

@@ -1,11 +1,10 @@
 package controller
 
-type AboutController struct  {
+type AboutController struct {
 	BaseController
-
 }
 
-func (this *AboutController)Index() {
+func (this *AboutController) Index() {
 
 	this.TplName = "about/about.html"
 	this.Render()

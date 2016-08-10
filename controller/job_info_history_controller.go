@@ -1,25 +1,23 @@
 package controller
 
 import (
-	"scheduler/entity"
 	"scheduler/common"
+	"scheduler/entity"
 )
 
 // 任务详情历史控制器
-type JobInfoHistoryController struct  {
-
-	 BaseController
-
+type JobInfoHistoryController struct {
+	BaseController
 }
 
 // jobinfohistory list
-func  (this *JobInfoHistoryController) List()  {
+func (this *JobInfoHistoryController) List() {
 
 	name := this.GetString("Name")
 	group := this.GetString("Group")
 
-	history := entity.JobInfoHistory{Name:name,Group:group}
-	historys,err := history.FindAllJobInfoList()
+	history := entity.JobInfoHistory{Name: name, Group: group}
+	historys, err := history.FindAllJobInfoList()
 
 	common.PanicIf(err)
 	this.Data["historys"] = historys

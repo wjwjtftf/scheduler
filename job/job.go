@@ -2,11 +2,11 @@ package job
 
 import (
 	"errors"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/entity"
+	"github.com/wjwjtftf/scheduler/invoker"
+	"github.com/wjwjtftf/scheduler/quartz"
 	"log"
-	"scheduler/common"
-	"scheduler/entity"
-	"scheduler/invoker"
-	"scheduler/quartz"
 	"time"
 )
 

@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"scheduler/common"
-	"scheduler/job"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/job"
 )
 
 type MonitorController struct {

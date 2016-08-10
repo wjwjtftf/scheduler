@@ -1,7 +1,7 @@
 package policy
 
 import (
-	"scheduler/entity"
+	"github.com/wjwjtftf/scheduler/entity"
 	"strings"
 )
 

@@ -3,12 +3,12 @@ package invoke
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/entity"
+	"github.com/wjwjtftf/scheduler/policy"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"scheduler/common"
-	"scheduler/entity"
-	"scheduler/policy"
 	"time"
 )
 

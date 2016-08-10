@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"scheduler/common"
-	"scheduler/entity"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/entity"
 )
 
 // 任务详情历史控制器

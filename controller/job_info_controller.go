@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"scheduler/common"
-	"scheduler/entity"
-	"scheduler/job"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/entity"
+	"github.com/wjwjtftf/scheduler/job"
 	"time"
 )
 

@@ -4,10 +4,10 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/wjwjtftf/scheduler/controller"
+	"github.com/wjwjtftf/scheduler/entity"
+	"github.com/wjwjtftf/scheduler/job"
 	"runtime"
-	"scheduler/controller"
-	"scheduler/entity"
-	"scheduler/job"
 )
 
 func init() {

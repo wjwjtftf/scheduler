@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"scheduler/common"
-	"scheduler/entity"
+	"github.com/wjwjtftf/scheduler/common"
+	"github.com/wjwjtftf/scheduler/entity"
 )
 
 type JobSnapshotController struct {

@@ -6,16 +6,16 @@ import (
 )
 
 type JobInfoHistory struct {
-	Id                  int    `orm:"pk;auto"`
-	Name                string `orm:"notnull"`
-	Group               string `orm:"notnull"`
-	Type                string `orm:"notnull"`
+	Id                  int `orm:"pk;auto"`
+	Name                string
+	Group               string
+	Type                string
 	Time                time.Time
 	Cron                string
-	Urls                string `orm:"notnull"`
+	Urls                string
 	ClassPath           string
 	InvokePolicy        string
-	IsActivity          int `orm:"notnull"`
+	IsActivity          int
 	Desc                string
 	CreateTime          time.Time
 	ModifyTime          time.Time

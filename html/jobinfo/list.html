@@ -52,15 +52,10 @@
                 <td>{{$element.Urls}}</td>
                 <td>{{$element.Param}}</td>
                 <td>
-
-
-
-                    {{if eq 1  $element.IsActivity}}
-
-                    <input id="switch-onText"  value="{{$element.Id}}" type="checkbox" checked data-size="mini"  data-on-text="激活" data-off-text="注销">
-                        {{else}}
-                    <input id="switch-offText" value="{{$element.Id}}"  type="checkbox"  data-size="mini"  data-on-text="激活" data-off-text="注销">
-
+                    {{if eq 1 $element.IsActivity}}
+                        <input id="switch-onText"  value="{{$element.Id}}" type="checkbox" checked data-size="mini"  data-on-text="激活" data-off-text="注销">
+                    {{else}}
+                        <input id="switch-offText" value="{{$element.Id}}"  type="checkbox"  data-size="mini"  data-on-text="激活" data-off-text="注销">
                     {{end}}
                 </td>
                 <td><a type="button" href="/jobinfo/info?Id={{$element.Id}}"  class="btn btn-default btn-sm"><span class="glyphicon  glyphicon-eye-open" aria-hidden="true"></span></a></td>

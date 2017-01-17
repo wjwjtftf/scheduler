@@ -108,6 +108,7 @@ func (this *JobInfoManagerController) Info() {
 	this.TplName = "jobinfo/info.html"
 	this.Render()
 }
+
 func (this *JobInfoManagerController) Edit() {
 	jsonResult := &entity.JsonResult{}
 	id, err := this.GetInt("Id")

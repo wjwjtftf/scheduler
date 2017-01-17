@@ -34,7 +34,7 @@ func (this *JobInfo) FindAllJobInfo() ([]*JobInfo, error) {
 	o := orm.NewOrm()
 	qs := o.QueryTable("job_info")
 	qs = qs.Filter("is_activity", 1)
-	_, err := qs.OrderBy("-modify_time", "-create_time").All(&jobs)
+	_, err := qs.OrderBy("id", "-modify_time", "-create_time").All(&jobs)
 
 	//common.PanicIf(err)
 	return jobs, err
@@ -57,7 +57,7 @@ func (this *JobInfo) FindAllJobInfoByPage() ([]*JobInfo, error) {
 		qs = qs.Limit(100)
 	}
 
-	_, err := qs.OrderBy("-modify_time", "-create_time").All(&jobs)
+	_, err := qs.OrderBy("id", "-modify_time", "-create_time").All(&jobs)
 
 	//common.PanicIf(err)
 	return jobs, err
